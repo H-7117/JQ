@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #parent{
+        width: 100%;
+        height: 50vh;
+        background-color: aqua;
+    }
+    #otherParent{
+        width: 30%;
+        height: 20vh;
+        background-color: rgb(105, 163, 163);
+        position: relative;
+        margin: 0 auto;
+    }
+    .new{
+       animation-name: move;
+       animation-duration: 5s; 
+    }
+    @keyframes move {
+        20%{
+            transform: translate(300px,0px);
+        }
+        50%{
+            transform: translate(500px,-280px);
+        }
+        100%{
+            transform: translate(980px,-290px);
+
+        }
+    }
+
+
+    .new{
+                   background-color: aqua;
+            margin: 0 auto;
+           
+            border-radius: 5px;
+        }
+
+       
+        #change{
+            width: 50%;
+            background-color: rgb(240, 234, 234);
+            height: 50px;
+            position: absolute;
+            left: 120px;
+            top: 20px;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+        }
+        .i-class{
+            color: red;
+        }
+
+        .last-parent{
+            width: fit-content;
+            /* background-color: black; */
+            margin: 0 auto;
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+        }
+        .chat-container{
+            width: 320px;
+            height: 470px;
+            border-radius: 15px 15px  ;
+            filter: drop-shadow(10px 20px 10px #00000025);
+            display: none;
+
+            
+        }
+        .chat-header{
+            width: 100%;
+            height: 70px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 15px 15px 0px 0px ;
+            display: flex;
+            padding-top: 10px;
+        }
+        .chat-header img{
+            border-radius: 50%;
+        }
+        .inner-chat{
+            width: 100%;
+            height: 330px;
+            background-color: rgb(247, 247, 247);
+            scrollbar-color: gray black;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            scrollbar-color: black red;
+        }
+
+        .inner-chat .one{
+            margin-bottom: 5px;
+            float: right;
+             background-color: rgb(51 ,51, 51);
+             color: white;
+             border-radius: 20px 20px 0px 20px;
+             padding: 0px 10px;
+             margin-right: 25px;
+        }
+
+        .inner-chat .header-chat{
+            margin-bottom: 20px;
+            width: 150px;
+            text-align: center;
+            float: right;
+            background-color: rgb(236, 236, 236);
+            color: rgb(165 ,163 ,163);
+            border-radius: 15px;
+            margin-right: 25%;
+
+        }
+
+        .inner-chat .two{
+            margin-top: 5px;
+            width: 200px;
+            float:left;
+            background-color: rgb(255, 255, 255);
+            color: rgb(51 ,51, 51);
+            border-radius: 15px 15px 15px 0px ;
+            padding: 0px 10px;
+            margin-left: 25px
+        }
+        .inner-chat div:nth-child(n+2):nth-child(-n+6){
+            filter: drop-shadow(10px 20px 10px #00000025);
+        }
+        
+
+        .footer-chat{
+            height: 60px;
+            border-radius: 0px 0px 15px 15px;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+        }
+        .footer-chat button{
+            width: 40px;
+            height: 50px;
+            border: none;
+            font-size: 25px;
+            background-color: transparent;
+            cursor: pointer;
+        }
+        .footer-chat input{
+            width: 170px;
+            height: 30px;
+            border-radius: 50px;
+            border: none;
+            filter: drop-shadow(10px 20px 10px #00000025);   
+        }
+        input::placeholder{
+            color: rgb(48 ,48, 48);
+            padding: 5px;
+        }
+        header div .side-pic>span{
+            background-color: rgb(48 ,48, 48);
+        }
+        .chat-container .chat-header .inner-text >p{
+            color: #ccc;
+        }
+        #btn-chat{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+
+        
+    </style>
+     <link rel="stylesheet" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+         crossorigin="anonymous" referrerpolicy="no-referrer" />
+         <link rel="stylesheet" href="./bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/css/bootstrap.min.css">
+
+         <script src="./jquery-3.7.1.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="parent">
+
+    
+    <button style="position: relative; right: 10px; top: 10px;" type="button" class="btn btn-primary float-end">
+        Messages        add to Cart <span  id="increas"class="badge bg-danger rounded-5" style="top: -20px; right: -15px;">1</span>
+
+      </button>
+    
+   
+   
+      <div class="container  " style="position: relative;">
+    
+    <button type="button" id="btn-increase" class="btn btn-primary px-3 " style="position: absolute; top: 300px; left: 300px;">
+        add to Cart <span id="dec" class="badge bg-danger rounded-5" style="top: -20px; right: -15px;">1</span>
+      </button>
+   </div>
+</div>
+
+
+<div id="otherParent">
+    <div class="container">
+        <div class="inner">
+            <button id="change"> <div id="text-hide"><i class="fa-regular fa-heart"></i> <span>like</span> <span>29</span></div> </button>        
+            </div>
+    </div>
+</div>
+
+        <div class="last-parent">
+            <div class="chat-container">
+                <header class="chat-header">
+                        <img src="./image/IMG_9024.jpg" height="60px" width="60px" style="border-radius: 50%; float: left;margin-right: 15px; margin-left: 25px;" >
+                        <div class="inner-text" style="line-height: 5px;">
+                         <h4>Hamood Alattas</h4>
+                         <p >Today at 12:56</p> 
+                </header>
+
+                <div class="inner-chat">
+                    <div class="header-chat">
+                        <p style="font-size: 10px;">Today at 12:59</p>
+                    </div>
+                    <div class="one" >
+                        <p style="font-size: 13px;">Hey, man! what's up, Mr stark?👋</p>
+                    </div>
+                    <div class="two" >
+                        <p style="font-size: 13px;">kid, where'd you come from?</p>
+                    </div>
+                    <div class="one">
+                        <p style="font-size: 13px;">Filed trip!🤣</p>
+                    </div>
+                    <div class="one" >
+                        <p style="font-size: 12px;">Uh, what is this guy's  problem, Mr Stark? 🤔</p>
+                    </div>
+                    <div class="two">
+                        <p style="font-size: 13px;">Uh, he's from space, he came here to steal a necklace from a wizard.</p>
+                    </div>
+                    <div class="one" id="last" style=" max-width: 200px; float:left; clear: left; background-color: rgb(255, 255, 255); color: rgb(51 ,51, 51); border-radius: 15px 15px 15px 0px ; padding: 0px 10px; margin-left: 25px">
+                    
+                    </div>
+                </div>
+                <div class="footer-chat">
+                    <div style=" margin:0px 6px;">
+                    <button>📷</button>
+                    <button>😊</button>
+                    <input type="text" placeholder="Type your message here!" id="enter">
+                    <button>🎙️</button>
+                    </div>
+
+                </div>
+            </div>
+            <button id="btn-chat" class=" btn btn-light"><i style="font-size: 20px;" class="fa-solid fa-comment"></i> </button>
+        </div>
+      <script src="./bootstrap-5.3.2/dist/js/bootstrap.bundle.js"></script>
+        <script>
+      
+        $(document).ready(function() {
+            $("#btn-increase").click(function() {
+            
+                var currentValue = $("#increas").text();
+                var newValue = parseInt(currentValue) + 1;
+                
+                var changeDown = $('#dec').text();
+                var newVal = parseInt(changeDown)-1;
+                $("#increas").text(newValue);
+                // $("#dec").text(newVal);
+                $("#dec").addClass('new')
+            });
+            });
+
+
+
+
+
+            $(document).ready(function(){
+            $('#change').click(function(){
+                $('#text-hide').hide();
+                $('#change').animate({
+                    width:50,
+                },500,()=>{
+                    $('#change').animate({
+                        width:150,
+                    },500,()=>{
+                        $('i').toggleClass('i-class');
+                        if($('i').hasClass('i-class')){
+                            $('#change span:last-child').text(+$('#change span:last-child').text()+1)
+                            $('#text-hide').show();
+                        }
+                        else{
+                            $('#change span:last-child').text(+$('#change span:last-child').text()-1)
+                            $('#text-hide').show();
+                        }
+                    })
+                })
+            })
+        })
+
+
+
+
+
+
+
+
+            $(document).ready(function(){
+                $('#btn-chat').click(function(){
+                    $('.chat-container').toggle(1000);
+                })
+            })
+
+
+            $("#enter").keypress(function(e){
+                if(e.key == 'Enter'){
+                    // $('#last').before(`<div class="one"> <p style="font-size: 13px;">${$('#enter').val()}</p></div>`)
+                    $('.inner-chat').append(`<div class="one"> <p style="font-size: 13px;">${$('#enter').val()}</p></div>`)
+                    $('.inner-chat').animate({scrollTop: $('.inner-chat').prop("scrollHeight")},1000);
+                }
+   
+            })
+       
+        </script>
+</body>
+</html>
